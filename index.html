@@ -51,11 +51,10 @@
     </header>
 
 
-    <main class=" max-w-[80%] mt-10 space-y-5 border-2 mx-auto">
+    <main class=" max-w-[80%] mt-10 space-y-5  mx-auto">
         <div class=" flex justify-between items-center ">
             <h3 class=" font-bold text-[20px] text-black">Available Jobs</h3>
             <div class="flex gap-2">
-                <p id="job-count" class="font-medium text-gray-500 text-[16px]">3</p>
                 <p class="font-medium text-gray-500 text-[16px] space-x-2"><span id="tabCount" class="tabCount"></span><span>Jobs</span></p>
             </div>
         </div>
@@ -67,7 +66,7 @@
 
 
         <!-- job container  -->
-        <div class="jobContainer grid grid-cols-1 gap-5">
+        <div id="jobContainer" class=" grid grid-cols-1 gap-5">
 
         </div>
 
@@ -77,19 +76,6 @@
             <div class="text-5xl mb-4 "><img class="mx-auto" src="./imges/jobs.png" alt=""></div>
             <h3 class="text-xl font-semibold">No Jobs Available</h3>
             <p class="text-gray-500">There are no jobs in this category yet.</p>
-        </div>
-
-        <div class=" hidden relative  p-5 rounded-lg bg-white mt-2 shadow ">
-            <button class=" absolute top-1 right-1"><img class="w-[20px] h-[20px]" src="./imges/delete-btn.png" alt=""></button>
-            <h2 class="text-blue-700 font-bold">Brain Station 23</h2>
-            <p class="text-black font-medium ">Software Engineer</p>
-            <p class="text-gray-600">Dhaka, Bangladesh</p>
-            <p class="space-x-5 mt-4 mb-4"><span class="text-gray-600">Full-time</span><span class="text-gray-600">•৳60,000 – ৳90,000 / month</span> </p>
-            <span id="status" class="bg-gray-200  px-2 py-1 rounded-md">ALL</span>
-            <p class="mt-4 text-gray-600">Develop and maintain scalable backend services using Node.js and PostgreSQL. Collaborate with frontend
-                teams to build RESTful APIs and optimize performance for high-traffic applications.</p>
-            <button onclick="traggleStatus(1, 'INTERVIEW')" id="INTERVIEW" class="mt-4 bg-green-200 text-green-700 px-4 py-2 rounded-lg">INTERVIEW</button>
-            <button onclick="traggleStatus(1, 'REJECTED')" id="REJECTED" class="mt-4 bg-red-200 text-red-700 px-4 py-2 rounded-lg">REJECTED</button>
         </div>
         
     </main>

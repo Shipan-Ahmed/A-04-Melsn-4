@@ -133,10 +133,12 @@ function renderJobs() {
             <p class="text-black font-medium ">${job.position}</p>
             <p class="text-gray-600">${job.location}</p>
             <p class="space-x-5 mt-4 mb-4"><span class="text-gray-600">${job.type}</span><span class="text-gray-600">•৳${job.salary}</span> </p>
-            <span id="status" class="bg-gray-200  px-2 py-1 rounded-md">${job.status.toUpperCase()}</span>
+            <span  class=" inline-block bg-gray-200  px-2 py-1 rounded-md">${job.status.toUpperCase()}</span>
             <p class="mt-4 text-gray-600">${job.description}</p>
-            <button onclick="traggleStatus(${job.id}, 'INTERVIEW')" id="INTERVIEW" class="mt-4 bg-green-200 text-green-700 px-4 py-2 rounded-lg">INTERVIEW</button>
-            <button onclick="traggleStatus(${job.id}, 'REJECTED')" id="REJECTED" class="mt-4 bg-red-200 text-red-700 px-4 py-2 rounded-lg">REJECTED</button>
+            <div class="mt-5 space-x-2">
+                <button onclick="traggleStatus(${job.id}, 'interview')" class="px-4 py-2 bg-green-500 text-white rounded-md">Interview</button>
+                <button onclick="traggleStatus(${job.id}, 'rejected')" class="px-4 py-2 bg-red-500 text-white rounded-md">Rejected</button>
+            </div>
     `;
     jobContainer.appendChild(jobCard);
   });
@@ -176,14 +178,17 @@ function traggleStatus(id, newStatus) {
  document.querySelectorAll(".btn").forEach((btn) => {
    btn.addEventListener("click", () => {
      document.querySelectorAll(".btn").forEach((b) => {
-       b.classList.remove("bg-blue-600", "text-white");
+       b.classList.remove("bg-blue-700", "text-white");
        b.classList.add("bg-gray-200");
      });
 
-     btn.classList.add("bg-blue-600", "text-white");
+     btn.classList.add("bg-blue-700", "text-white");
      btn.classList.remove("bg-gray-200");
 
      currentTab = btn.dataset.tab;
      renderJobs();
    });
  });
+
+updateDashboard();
+renderJobs();
