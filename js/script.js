@@ -90,6 +90,22 @@ let jobCards = [
 ];
 
 
+// update Deshboard
+
+function updateDashboard() {
+  let totalJobs = jobCards.length;
+  document.getElementById("total").innerText = totalJobs;
+
+  let interviewJobs = jobCards.filter(j => j.status === "INTERVIEW").length;
+  document.getElementById("interview").innerText = interviewJobs;
+
+  let rejectedJobs = jobCards.filter(j => j.status === "REJECTED").length;
+  document.getElementById("rejected").innerText = rejectedJobs;
+}
+
+
+
+
 // console.log(jobCards);
 
 function btnClick(id) {
@@ -101,4 +117,14 @@ function btnClick(id) {
   document.getElementById(id).classList.remove("bg-gray-200", "text-black");
   document.getElementById(id).classList.add("bg-blue-700", "text-white");
   
+}
+
+function traggleStatus(id, newStatus) {
+  let job = jobCards.find(j => j.id === id);
+  if (job.status === newStatus) {
+    job.status = "ALL";
+  } else {
+    job.status = newStatus;
+  }
+  updateDashboard();
 }

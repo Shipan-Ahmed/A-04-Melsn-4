@@ -21,6 +21,10 @@
     <!-- all dasyui themes  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         *{
             font-family: "Geist", sans-serif;
@@ -60,8 +64,35 @@
         </div>
         <div id="job-btn" class="flex gap-5" >
             <button onclick="btnClick('btn-all')" id="btn-all"  class=" btn bg-blue-700 data-tap = all px-8 py-1 font-medium text-[16px] text-white rounded-lg">All</button>
-            <button onclick="btnClick('btn-interview')" id="btn-interview"  class=" btn bg-gray-200 data-tap = px-4 py-2 font-medium text-[16px] text-black rounded-lg"> Interview</button>
-            <button onclick="btnClick('btn-rejected')" id="btn-rejected"  class=" btn bg-gray-200 data-tap = px-4 py-2 font-medium text-[16px] text-black rounded-lg">Rejected</button>
+            <button onclick="btnClick('btn-interview')" id="btn-interview"  class=" btn bg-gray-200  px-4 py-2 font-medium text-[16px] text-black rounded-lg"> Interview</button>
+            <button onclick="btnClick('btn-rejected')" id="btn-rejected"  class=" btn bg-gray-200  px-4 py-2 font-medium text-[16px] text-black rounded-lg">Rejected</button>
+        </div>
+
+
+        <!-- job container  -->
+        <div class="job-container grid grid-cols-1 gap-5">
+
+        </div>
+
+        <!-- empty state   -->
+
+        <div id="emptyState" class="text-center mt-10">
+            <div class="text-5xl mb-4 "><img class="mx-auto" src="./imges/jobs.png" alt=""></div>
+            <h3 class="text-xl font-semibold">No Jobs Available</h3>
+            <p class="text-gray-500">There are no jobs in this category yet.</p>
+        </div>
+
+        <div class="relative  p-5 rounded-lg bg-white mt-2 shadow ">
+            <button class=" absolute top-1 right-1"><img class="w-[20px] h-[20px]" src="./imges/delete-btn.png" alt=""></button>
+            <h2 class="text-blue-700 font-bold">Brain Station 23</h2>
+            <p class="text-black font-medium ">Software Engineer</p>
+            <p class="text-gray-600">Dhaka, Bangladesh</p>
+            <p class="space-x-5 mt-4 mb-4"><span class="text-gray-600">Full-time</span><span class="text-gray-600">•৳60,000 – ৳90,000 / month</span> </p>
+            <span id="status" class="bg-gray-200  px-2 py-1 rounded-md">ALL</span>
+            <p class="mt-4 text-gray-600">Develop and maintain scalable backend services using Node.js and PostgreSQL. Collaborate with frontend
+                teams to build RESTful APIs and optimize performance for high-traffic applications.</p>
+            <button onclick="traggleStatus(1, 'INTERVIEW')" id="INTERVIEW" class="mt-4 bg-green-200 text-green-700 px-4 py-2 rounded-lg">INTERVIEW</button>
+            <button onclick="traggleStatus(1, 'REJECTED')" id="REJECTED" class="mt-4 bg-red-200 text-red-700 px-4 py-2 rounded-lg">REJECTED</button>
         </div>
         
     </main>
