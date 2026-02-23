@@ -49,13 +49,20 @@
         </div>
     </header>
 
-    <main class=" max-w-[80%] mt-10 border-2 mx-auto">
-        <div class="flex justify-end mb-4">
-            <button id="add-btn" class="btn btn-primary">Add Application</button>
+    <main class=" max-w-[80%] mt-10 space-y-5 border-2 mx-auto">
+        <div class="border-2 flex justify-between items-center ">
+            <h3 class=" font-bold text-[20px] text-black">Available Jobs</h3>
+            <div class="flex gap-2">
+                <p class="font-medium text-gray-500 text-[16px]">3</p>
+                <p class="font-medium text-gray-500 text-[16px]">Jobs</p>
+            </div>
         </div>
-        <div id="applications" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Job application cards will be added here dynamically -->
+        <div id="job-btn" class="border-2 flex gap-5" >
+            <button class="border-1 bg-[#3B82F6] px-8 py-1 font-medium text-[16px] text-white rounded-lg">All</button>
+            <button class="border-1 bg-gray-300 px-3 py-1 font-medium text-[16px] text-black rounded-lg"> Interview</button>
+            <button class="border-1 bg-gray-300 px-3 py-1 font-medium text-[16px] text-black rounded-lg">Rejected</button>
         </div>
+        
     </main>
 </body>
 </html>
