@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <!-- font cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    
+    <!-- tailwind cdn  + daisyui cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- all dasyui themes  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        *{
+            font-family: "Geist", sans-serif;
+        }
+        body{
+            background-color: #f5f6f7;
+        }
+    </style>
+</head>
+<body>
+    <header class=" max-w-[80%] border-b-2 border-gray-200 mx-auto pt-10 space-y-4 ">
+        <h1 id="haader-title" class="hdr-title font-bold text-[32px] text-black">Job Application Tracker</h1>
+        <div class="hdr-cards pb-10 flex gap-4">
+            <div class="w-full bg-white  p-4 rounded-lg">
+                <p class="font-medium text-gray-500 text-[14px]">Total</p>
+                <p id="total" class="font-bold text-2xl text-black">3</p>
+            </div>
+            <div class="w-full bg-white  p-4 rounded-lg">
+                <p class="font-medium text-gray-500 text-[14px]">Interview</p>
+                <p  id="interview" class="font-bold text-2xl text-green-500">0</p>
+            </div>
+            <div class="w-full bg-white  p-4 rounded-lg">
+                <p class="font-medium text-gray-500 text-[14px]">Rejected</p>
+                <p id="rejected" class="font-bold text-2xl text-red-500">0</p>
+            </div>
+        </div>
+    </header>
+
+    <main class=" max-w-[80%] mt-10 border-2 mx-auto">
+        <div class="flex justify-end mb-4">
+            <button id="add-btn" class="btn btn-primary">Add Application</button>
+        </div>
+        <div id="applications" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Job application cards will be added here dynamically -->
+        </div>
+    </main>
+</body>
+</html>
