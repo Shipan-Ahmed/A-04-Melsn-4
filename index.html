@@ -41,11 +41,11 @@
             </div>
             <div class=" bg-white  p-5 rounded-lg">
                 <p class="font-medium text-gray-500 ">Interview</p>
-                <p  id="interview" class="font-bold text-2xl text-green-600">0</p>
+                <p  id="interviewCount" class="font-bold text-2xl text-green-600">0</p>
             </div>
             <div class=" bg-white  p-5 rounded-lg">
                 <p class="font-medium text-gray-500 ">Rejected</p>
-                <p id="rejected" class="font-bold text-2xl text-red-600">0</p>
+                <p id="rejectedCount" class="font-bold text-2xl text-red-600">0</p>
             </div>
         </div>
     </header>
@@ -54,12 +54,12 @@
     <main class=" max-w-[80%] mt-10 space-y-5  mx-auto">
         <div class=" flex justify-between items-center ">
             <h3 class=" font-bold text-[20px] text-black">Available Jobs</h3>
-            <span id="tabCount" class="font-medium text-gray-500 text-[16px] space-x-2"></span>
+            <p class="space-x-1"><span id="tabCount" class="font-medium text-gray-500 text-[16px]"></span><span class="font-medium text-gray-500 text-[16px]"> jobs</span></p>
         </div>
         <div id="job-btn" class="flex gap-5" >
-            <button onclick="btnClick('btn-all')" id="btn-all"  class=" tabBtn bg-blue-700 px-8 py-1 font-medium text-[16px] text-white rounded-lg" data-tab = "all">All</button>
-            <button onclick="btnClick('btn-interview')" id="btn-interview"  class=" tabBtn bg-gray-200  px-4 py-2 font-medium text-[16px] text-black rounded-lg" data-tab = "interview"> Interview</button>
-            <button onclick="btnClick('btn-rejected')" id="btn-rejected"  class="  tabBtn bg-gray-200  px-4 py-2 font-medium text-[16px] text-black rounded-lg" data-tab = "rejected">Rejected</button>
+            <button onclick="btnClick('all')" id="all"  class=" tabBtn bg-blue-700 px-8 py-1 font-medium text-[16px] text-white rounded-lg" data-tab = "all">All</button>
+            <button onclick="btnClick('interview')" id="interview"  class=" tabBtn bg-gray-200  px-4 py-2 font-medium text-[16px] text-black rounded-lg" data-tab = "interview"> Interview</button>
+            <button onclick="btnClick('rejected')" id="rejected"  class="  tabBtn bg-gray-200  px-4 py-2 font-medium text-[16px] text-black rounded-lg" data-tab = "rejected">Rejected</button>
         </div>
 
 

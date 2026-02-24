@@ -101,10 +101,10 @@ function updateDashboard() {
   document.getElementById("total").innerText = totalJobs;
 
   let interviewJobs = jobCards.filter((j) => j.status === "interview").length;
-  document.getElementById("interview").innerText = interviewJobs;
+  document.getElementById("interviewCount").innerText = interviewJobs;
 
   let rejectedJobs = jobCards.filter((j) => j.status === "rejected").length;
-  document.getElementById("rejected").innerText = rejectedJobs;
+  document.getElementById("rejectedCount").innerText = rejectedJobs;
 }
 
 // renderFunction
@@ -117,7 +117,7 @@ function renderJobs() {
       ? jobCards
       : jobCards.filter((j) => j.status === currentFilter);
 
-  document.getElementById("tabCount").innerText = filteredJobs.length + " jobs";
+  document.getElementById("tabCount").innerText = filteredJobs.length;
 
   if (filteredJobs.length === 0) {
     emptyState.classList.remove("hidden");
@@ -127,7 +127,7 @@ function renderJobs() {
 
   filteredJobs.forEach((job) => {
     let jobCard = document.createElement("div");
-    jobCard.classList.add("bg-white", "p-5", "rounded-lg", "shadow-md");
+    jobCard.classList.add("bg-white", "relative", "p-5", "rounded-lg", "shadow-md");
     jobCard.innerHTML = `
     
     <button onclick="deleteJob(${job.id})" class=" absolute top-1 right-1"><img class="w-[20px] h-[20px]" src="./imges/delete-btn.png" alt=""></button>
@@ -135,7 +135,13 @@ function renderJobs() {
             <p class="text-black font-medium ">${job.position}</p>
             <p class="text-gray-600">${job.location}</p>
             <p class="space-x-5 mt-4 mb-4"><span class="text-gray-600">${job.type}</span><span class="text-gray-600">•${job.salary}</span> </p>
-            <span  class=" inline-block bg-gray-200  px-2 py-1 rounded-md">${job.status.toUpperCase()}</span>
+            <span  class=" inline-block  px-2 py-1 rounded-md ${
+              job.status === "interview"
+                ? "bg-green-100 text-green-700"
+                : job.status === "rejected"
+                  ? "bg-red-100 text-red-700"
+                  : "bg-gray-200 text-gray-600"
+            }">${job.status.toUpperCase()}</span>
             <p class="mt-4 text-gray-600">${job.description}</p>
             <div class="mt-5 space-x-2">
                 <button onclick="toggleStatus(${job.id}, 'interview')" class="px-4 py-2 rounded-md ${
@@ -161,17 +167,23 @@ function deleteJob(id) {
   renderJobs();
 }
 
-// function btnClick(id) {
-//   let allBtn = document.querySelectorAll(".btn");
-//   for (let btn of allBtn) {
-//     btn.classList.remove("bg-blue-500", "text-white");
-//     btn.classList.add("bg-gray-200", "text-black");
-//   }
-//   document.getElementById(id).classList.remove("bg-gray-200", "text-black");
-//   document.getElementById(id).classList.add("bg-blue-700", "text-white");
-//   currentFilter = id;
-//   renderJobs();
-// }
+
+// btn swaping 
+  
+function btnClick(id) {
+  let allBtn = document.querySelectorAll(".tabBtn");
+  for (let btn of allBtn) {
+    btn.classList.remove("bg-blue-700", "text-white");
+    btn.classList.add("bg-gray-200", "text-black");
+  }
+  document.getElementById(id).classList.remove("bg-gray-200", "text-black");
+  document.getElementById(id).classList.add("bg-blue-700", "text-white");
+  currentFilter = id;
+  renderJobs();
+}
+
+
+// toggle status
 
 function toggleStatus(id, newStatus) {
   let job = jobCards.find((j) => j.id === id);
@@ -185,20 +197,20 @@ function toggleStatus(id, newStatus) {
 }
 
 
- document.querySelectorAll(".tabBtn").forEach((btn) => {
-   btn.addEventListener("click", () => {
-     document.querySelectorAll(".tabBtn").forEach((b) => {
-       b.classList.remove("bg-blue-700", "text-white");
-       b.classList.add("bg-gray-200");
-     });
+//  document.querySelectorAll(".tabBtn").forEach((btn) => {
+//    btn.addEventListener("click", () => {
+//      document.querySelectorAll(".tabBtn").forEach((b) => {
+//        b.classList.remove("bg-blue-700", "text-white");
+//        b.classList.add("bg-gray-200");
+//      });
 
-     btn.classList.add("bg-blue-700", "text-white");
-     btn.classList.remove("bg-gray-200");
+//      btn.classList.add("bg-blue-700", "text-white");
+//      btn.classList.remove("bg-gray-200");
 
-     currentFilter = btn.dataset.tab;
-     renderJobs();
-   });
- });
+//      currentFilter = btn.dataset.tab;
+//      renderJobs();
+//    });
+//  });
 
-updateDashboard();
-renderJobs();
+// updateDashboard();
+// renderJobs();
