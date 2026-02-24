@@ -130,7 +130,7 @@ function renderJobs() {
     jobCard.classList.add("bg-white", "relative", "p-5", "rounded-lg", "shadow-md");
     jobCard.innerHTML = `
     
-    <button onclick="deleteJob(${job.id})" class=" absolute top-1 right-1"><img class="w-[20px] h-[20px]" src="./imges/delete-btn.png" alt=""></button>
+    <button onclick="deleteJob(${job.id})" class=" absolute cursor-pointer top-2 right-2"><img class="w-[20px] h-[20px]" src="./imges/delete-btn.png" alt=""></button>
     <h2 class="text-blue-700 font-bold">${job.companyName}</h2>
             <p class="text-black font-medium ">${job.position}</p>
             <p class="text-gray-600">${job.location}</p>
@@ -144,12 +144,12 @@ function renderJobs() {
             }">${job.status.toUpperCase()}</span>
             <p class="mt-4 text-gray-600">${job.description}</p>
             <div class="mt-5 space-x-2">
-                <button onclick="toggleStatus(${job.id}, 'interview')" class="px-4 py-2 rounded-md ${
+                <button onclick="toggleStatus(${job.id}, 'interview')" class="px-4 py-2 cursor-pointer rounded-md ${
                   job.status === "interview"
                     ? "bg-green-700 text-white"
                     : "bg-green-200 text-green-700"
                 }">Interview</button>
-                <button onclick="toggleStatus(${job.id}, 'rejected')" class="px-4 py-2  rounded-md ${
+                <button onclick="toggleStatus(${job.id}, 'rejected')" class="px-4 py-2 cursor-pointer  rounded-md ${
                   job.status === "rejected"
                     ? "bg-red-700 text-white"
                     : "bg-red-200 text-red-700"
@@ -212,5 +212,5 @@ function toggleStatus(id, newStatus) {
 //    });
 //  });
 
-// updateDashboard();
-// renderJobs();
+updateDashboard();
+renderJobs();
