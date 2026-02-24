@@ -13,6 +13,9 @@ Answer:
 The main difference between them is how they select elements and what type of collection they return (single element, live HTMLCollection, or static NodeList).
 
 
+
+
+
 2. How do you create and insert a new element into the DOM?
 
 Answer: 
@@ -28,6 +31,8 @@ div.innerText = "Hello World!";             // add content
 document.body.appendChild(div);             // insert into parent
 
 
+
+
 3. What is Event Bubbling? And how does it work?
 
 Answer:
@@ -37,6 +42,8 @@ Answer:
 How it works:
 
 When an event occurs on a child element, it first runs on that element, then it moves to its parent, then to the grandparent, and continues until it reaches the document object.t
+
+
 
 
 4. What is Event Delegation in JavaScript? Why is it useful?
@@ -51,6 +58,8 @@ Why is it useful:
 - It improves performance because we use fewer event listeners.
 - It works for dynamically created elements.
 - It makes the code cleaner and easier to manage.
+
+
 
 
 
