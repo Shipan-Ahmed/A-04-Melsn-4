@@ -4,7 +4,7 @@ let jobCards = [
   {
     id: 1,
     companyName: "Brain Station 23",
-    position: "Software Engineer (Backend)",
+    position: "Software Engineer",
     location: "Dhaka, Bangladesh",
     type: "Full-time",
     salary: "৳60,000 – ৳90,000 / month",
@@ -91,6 +91,9 @@ let jobCards = [
   },
 ];
 
+let jobContainer = document.getElementById("jobContainer");
+let emptyState = document.getElementById("emptyState");
+
 // update Deshboard
 
 function updateDashboard() {
@@ -107,7 +110,6 @@ function updateDashboard() {
 // renderFunction
 
 function renderJobs() {
-  let jobContainer = document.getElementById("jobContainer");
   jobContainer.innerHTML = "";
 
   let filteredJobs =
@@ -115,12 +117,12 @@ function renderJobs() {
       ? jobCards
       : jobCards.filter((j) => j.status === currentFilter);
 
-  document.getElementById("tabCount").innerText = filteredJobs.length;
+  document.getElementById("tabCount").innerText = filteredJobs.length + " jobs";
 
   if (filteredJobs.length === 0) {
-    document.getElementById("emptyState").classList.remove("hidden");
+    emptyState.classList.remove("hidden");
   } else {
-    document.getElementById("emptyState").classList.add("hidden");
+    emptyState.classList.add("hidden");
   }
 
   filteredJobs.forEach((job) => {
@@ -132,12 +134,20 @@ function renderJobs() {
     <h2 class="text-blue-700 font-bold">${job.companyName}</h2>
             <p class="text-black font-medium ">${job.position}</p>
             <p class="text-gray-600">${job.location}</p>
-            <p class="space-x-5 mt-4 mb-4"><span class="text-gray-600">${job.type}</span><span class="text-gray-600">•৳${job.salary}</span> </p>
+            <p class="space-x-5 mt-4 mb-4"><span class="text-gray-600">${job.type}</span><span class="text-gray-600">•${job.salary}</span> </p>
             <span  class=" inline-block bg-gray-200  px-2 py-1 rounded-md">${job.status.toUpperCase()}</span>
             <p class="mt-4 text-gray-600">${job.description}</p>
             <div class="mt-5 space-x-2">
-                <button onclick="traggleStatus(${job.id}, 'interview')" class="px-4 py-2 bg-green-500 text-white rounded-md">Interview</button>
-                <button onclick="traggleStatus(${job.id}, 'rejected')" class="px-4 py-2 bg-red-500 text-white rounded-md">Rejected</button>
+                <button onclick="toggleStatus(${job.id}, 'interview')" class="px-4 py-2 rounded-md ${
+                  job.status === "interview"
+                    ? "bg-green-700 text-white"
+                    : "bg-green-200 text-green-700"
+                }">Interview</button>
+                <button onclick="toggleStatus(${job.id}, 'rejected')" class="px-4 py-2  rounded-md ${
+                  job.status === "rejected"
+                    ? "bg-red-700 text-white"
+                    : "bg-red-200 text-red-700"
+                }">Rejected</button>
             </div>
     `;
     jobContainer.appendChild(jobCard);
@@ -163,7 +173,7 @@ function deleteJob(id) {
 //   renderJobs();
 // }
 
-function traggleStatus(id, newStatus) {
+function toggleStatus(id, newStatus) {
   let job = jobCards.find((j) => j.id === id);
   if (job.status === newStatus) {
     job.status = "all";
@@ -175,9 +185,9 @@ function traggleStatus(id, newStatus) {
 }
 
 
- document.querySelectorAll(".btn").forEach((btn) => {
+ document.querySelectorAll(".tabBtn").forEach((btn) => {
    btn.addEventListener("click", () => {
-     document.querySelectorAll(".btn").forEach((b) => {
+     document.querySelectorAll(".tabBtn").forEach((b) => {
        b.classList.remove("bg-blue-700", "text-white");
        b.classList.add("bg-gray-200");
      });
@@ -185,7 +195,7 @@ function traggleStatus(id, newStatus) {
      btn.classList.add("bg-blue-700", "text-white");
      btn.classList.remove("bg-gray-200");
 
-     currentTab = btn.dataset.tab;
+     currentFilter = btn.dataset.tab;
      renderJobs();
    });
  });
