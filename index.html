@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <!-- Tailwind CDN -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    
+    <!-- DaisyUI CDN -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
     
     <!-- font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +46,7 @@
         <div class="hdr-cards pb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class=" bg-white  p-5 rounded-xl shadow">
                 <p class="font-medium text-gray-500 ">Total</p>
-                <p id="total" class="font-bold text-2xl text-black">3</p>
+                <p id="total" class="total font-bold text-2xl text-black">0</p>
             </div>
             <div class=" bg-white  p-5 rounded-lg">
                 <p class="font-medium text-gray-500 ">Interview</p>
@@ -54,7 +63,7 @@
     <main class=" max-w-[80%] mt-10 space-y-5  mx-auto">
         <div class=" flex justify-between items-center ">
             <h3 class=" font-bold text-[20px] text-black">Available Jobs</h3>
-            <p class="space-x-1"><span id="tabCount" class="font-medium text-gray-500 text-[16px]"></span><span class="font-medium text-gray-500 text-[16px]"> jobs</span></p>
+            <p class="space-x-1"><span id="tabCount" class="font-medium text-gray-500 text-[16px]"></span><span class="font-medium text-gray-500 text-[16px]">of </span><span id="totalCount" class="total font-medium text-gray-500 text-[16px]">0</span><span class=" font-medium text-gray-500 text-[16px]"> jobs</span></p>
         </div>
         <div id="job-btn" class="flex gap-5" >
             <button onclick="btnClick('all')" id="all"  class=" tabBtn cursor-pointer bg-blue-700 px-8 py-1 font-medium text-[16px] text-white rounded-lg" data-tab = "all">All</button>
@@ -70,10 +79,10 @@
 
         <!-- empty state   -->
 
-        <div id="emptyState" class="hidden text-center mt-10">
+        <div id="emptyState" class="hidden  text-center mt-10  p-4 rounded-lg bg-white">
             <div class="text-5xl mb-4 "><img class="mx-auto" src="./imges/jobs.png" alt=""></div>
             <h3 class="text-xl font-semibold">No Jobs Available</h3>
-            <p class="text-gray-500">There are no jobs in this category yet.</p>
+            <p class="text-gray-500">Check back soon for new job opportunities.</p>
         </div>
         
     </main>

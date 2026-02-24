@@ -91,14 +91,21 @@ let jobCards = [
   },
 ];
 
+
+
+
 let jobContainer = document.getElementById("jobContainer");
 let emptyState = document.getElementById("emptyState");
+
+
+
 
 // update Deshboard
 
 function updateDashboard() {
   let totalJobs = jobCards.length;
-  document.getElementById("total").innerText = totalJobs;
+  document.getElementsByClassName("total")[0].innerText = totalJobs;
+  document.getElementsByClassName("total")[1].innerText = totalJobs;
 
   let interviewJobs = jobCards.filter((j) => j.status === "interview").length;
   document.getElementById("interviewCount").innerText = interviewJobs;
@@ -106,6 +113,9 @@ function updateDashboard() {
   let rejectedJobs = jobCards.filter((j) => j.status === "rejected").length;
   document.getElementById("rejectedCount").innerText = rejectedJobs;
 }
+
+
+
 
 // renderFunction
 
@@ -130,7 +140,7 @@ function renderJobs() {
     jobCard.classList.add("bg-white", "relative", "p-5", "rounded-lg", "shadow-md");
     jobCard.innerHTML = `
     
-    <button onclick="deleteJob(${job.id})" class=" absolute cursor-pointer top-2 right-2"><img class="w-[20px] h-[20px]" src="./imges/delete-btn.png" alt=""></button>
+    <button onclick="deleteJob(${job.id})" class=" absolute cursor-pointer top-4 right-4 p-1 bg-gray-100 opacity-70 border border-gray-400"><img class="w-[20px] h-[20px]" src="./imges/delete-btn.png" alt=""></button>
     <h2 class="text-blue-700 font-bold">${job.companyName}</h2>
             <p class="text-black font-medium ">${job.position}</p>
             <p class="text-gray-600">${job.location}</p>
@@ -141,7 +151,7 @@ function renderJobs() {
                 : job.status === "rejected"
                   ? "bg-red-100 text-red-700"
                   : "bg-gray-200 text-gray-600"
-            }">${job.status.toUpperCase()}</span>
+            }">${job.status === "all" ? "Not Applied" : job.status}</span>
             <p class="mt-4 text-gray-600">${job.description}</p>
             <div class="mt-5 space-x-2">
                 <button onclick="toggleStatus(${job.id}, 'interview')" class="px-4 py-2 cursor-pointer rounded-md ${
@@ -160,6 +170,7 @@ function renderJobs() {
   });
 }
 
+
 // delete section
 function deleteJob(id) {
   jobCards = jobCards.filter((job) => job.id !== id);
@@ -167,20 +178,6 @@ function deleteJob(id) {
   renderJobs();
 }
 
-
-// btn swaping 
-  
-function btnClick(id) {
-  let allBtn = document.querySelectorAll(".tabBtn");
-  for (let btn of allBtn) {
-    btn.classList.remove("bg-blue-700", "text-white");
-    btn.classList.add("bg-gray-200", "text-black");
-  }
-  document.getElementById(id).classList.remove("bg-gray-200", "text-black");
-  document.getElementById(id).classList.add("bg-blue-700", "text-white");
-  currentFilter = id;
-  renderJobs();
-}
 
 
 // toggle status
@@ -197,20 +194,20 @@ function toggleStatus(id, newStatus) {
 }
 
 
-//  document.querySelectorAll(".tabBtn").forEach((btn) => {
-//    btn.addEventListener("click", () => {
-//      document.querySelectorAll(".tabBtn").forEach((b) => {
-//        b.classList.remove("bg-blue-700", "text-white");
-//        b.classList.add("bg-gray-200");
-//      });
 
-//      btn.classList.add("bg-blue-700", "text-white");
-//      btn.classList.remove("bg-gray-200");
-
-//      currentFilter = btn.dataset.tab;
-//      renderJobs();
-//    });
-//  });
+// btn swaping 
+  
+function btnClick(id) {
+  let allBtn = document.querySelectorAll(".tabBtn");
+  for (let btn of allBtn) {
+    btn.classList.remove("bg-blue-700", "text-white");
+    btn.classList.add("bg-gray-200", "text-black");
+  }
+  document.getElementById(id).classList.remove("bg-gray-200", "text-black");
+  document.getElementById(id).classList.add("bg-blue-700", "text-white");
+  currentFilter = id;
+  renderJobs();
+}
 
 updateDashboard();
 renderJobs();
